@@ -6,6 +6,9 @@ function App() {
   return (
     <div className="App">
       <Pyramide />
+      <footer>
+        <a href="http://www.perfect-kreim.de/impressum.html">impressum</a>
+      </footer>
     </div>
   );
 }
