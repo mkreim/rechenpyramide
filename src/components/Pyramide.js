@@ -17,7 +17,7 @@ function getRandomInt(min, max) {
   return Math.round(Math.random() * (max - min) + min);
 }
 
-function initializePyramide() {
+function initializePyramid() {
   const result = [];
 
   for (let rowIdx = rowCount; rowIdx >= 0; rowIdx -= 1) {
@@ -35,8 +35,8 @@ function initializePyramide() {
   return result;
 }
 
-const PyramideInput = styled.input`
-  width: 3em;
+const PyramidInput = styled.input`
+  width: 2em;
   text-align: center;
   font-size: x-large;
   background: ${props => props.color};
@@ -46,7 +46,7 @@ const colorEmpty = '#ffffff';
 const colorWrong = '#ff0000';
 const colorRight = '#00ff00';
 
-function PyramideCell({ number, colIdx, rowIdx, errors, getValues, register }) {
+function PyramidCell({ number, colIdx, rowIdx, errors, getValues, register }) {
   const name = useMemo(() => `${rowIdx};${colIdx}`, [rowIdx, colIdx]);
   const currentValue = useMemo(() => {
     const values = getValues();
@@ -66,7 +66,7 @@ function PyramideCell({ number, colIdx, rowIdx, errors, getValues, register }) {
   }, [currentValue, isWrong]);
 
   return (
-    <PyramideInput
+    <PyramidInput
       defaultValue={rowIdx === rowCount ? number : null}
       color={color}
       ref={register({
@@ -77,12 +77,12 @@ function PyramideCell({ number, colIdx, rowIdx, errors, getValues, register }) {
   );
 }
 
-function PyramideRow({ row, register, rowIdx, errors, getValues }) {
+function PyramidRow({ row, register, rowIdx, errors, getValues }) {
   return (
     <div>
       {row.map((number, colIdx) => {
         return (
-          <PyramideCell
+          <PyramidCell
             number={number}
             colIdx={colIdx}
             rowIdx={rowIdx}
@@ -96,12 +96,12 @@ function PyramideRow({ row, register, rowIdx, errors, getValues }) {
   );
 }
 
-function Pyramide() {
+function Pyramid() {
   const { register, handleSubmit, errors, getValues, triggerValidation } = useForm();
   const onSubmit = data => {
     console.log(data);
   };
-  const pyramide = useMemo(() => initializePyramide(), []);
+  const pyramid = useMemo(() => initializePyramid(), []);
 
   return (
     <form
@@ -110,8 +110,8 @@ function Pyramide() {
         await triggerValidation();
       }}
     >
-      {pyramide.map((row, rowIdx) => (
-        <PyramideRow
+      {pyramid.map((row, rowIdx) => (
+        <PyramidRow
           row={row}
           register={register}
           rowIdx={rowIdx}
@@ -124,4 +124,4 @@ function Pyramide() {
   );
 }
 
-export default React.memo(Pyramide);
+export default React.memo(Pyramid);
