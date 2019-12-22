@@ -73,6 +73,7 @@ function PyramidCell({ number, colIdx, rowIdx, errors, getValues, register }) {
         validate: value => parseInt(value, 10) === number,
       })}
       name={name}
+      type="number"
     />
   );
 }
@@ -119,7 +120,6 @@ function Pyramid() {
           key={rowIdx}
           errors={errors}
           getValues={getValues}
-          type="number"
         />
       ))}
     </form>
