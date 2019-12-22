@@ -109,6 +109,7 @@ function Pyramid() {
       onChange={async () => {
         await triggerValidation();
       }}
+      autoComplete="off"
     >
       {pyramid.map((row, rowIdx) => (
         <PyramidRow
@@ -118,6 +119,7 @@ function Pyramid() {
           key={rowIdx}
           errors={errors}
           getValues={getValues}
+          type="number"
         />
       ))}
     </form>
